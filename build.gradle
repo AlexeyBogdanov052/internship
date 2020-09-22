@@ -19,11 +19,14 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 }
 
+def changeLog = "$projectDir/src/main/db/changelog.xml"
 
 liquibase {
     activities {
         main {
-
+            changeLogFile changeLog
+            url 'http://127.0.0.1:49848/browser/'
+            psassword 'postgres'
         }
     }
 }
