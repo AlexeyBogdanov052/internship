@@ -18,3 +18,12 @@ dependencies {
     implementation 'org.codehaus.groovy:groovy:2.4.12'
     testImplementation 'junit:junit:4.12'
 }
+
+
+liquibase {
+    activities {
+        main {
+            //--
+        }
+    }
+}
