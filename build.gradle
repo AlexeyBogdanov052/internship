@@ -19,7 +19,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 }
 
-def changeLog = "$projectDir/src/main/db/changelog.xml"
+def changeLog = "src/main/db/changelog.xml"
 
 liquibase {
     activities {
