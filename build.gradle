@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+    id "org.liquibase.gradle" version "2.0.4"
+    id 'java-gradle-plugin'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation localGroovy()
+    implementation gradleApi()
+    implementation 'org.codehaus.groovy:groovy:2.4.12'
+    testImplementation 'junit:junit:4.12'
+}
+
