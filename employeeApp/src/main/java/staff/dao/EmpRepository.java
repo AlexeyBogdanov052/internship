@@ -1,7 +1,6 @@
-package staff;
+package staff.dao;
 
-import java.util.List;
-
+import staff.domain.employee;
 import org.springframework.data.repository.CrudRepository;
 
 public interface EmpRepository extends CrudRepository<employee, Long> {
