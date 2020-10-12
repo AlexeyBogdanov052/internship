@@ -1,24 +1,30 @@
 package staff.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.Data;
+
+import javax.persistence.*;
 
 @Entity
-public class employee {
+@Data
+@Table(name = "staff")
+public class Employee {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
     private Long id;
+    @Column(name = "emp_surname", nullable = false)
     private String emp_surname;
+    @Column(name = "emp_name", nullable = false)
     private String emp_name;
+    @Column(name = "emp_patronymic", nullable = false)
     private String emp_patronymic;
+    @Column(name = "emp_hash", nullable = false)
     private String emp_hash;
 
-    protected employee() {}
+    protected Employee() {}
 
-    public employee(long id, String emp_surname, String emp_name, String emp_patronymic, String emp_hash) {
+    public Employee(long id, String emp_surname, String emp_name, String emp_patronymic, String emp_hash) {
         this.id = id;
         this.emp_surname = emp_surname;
         this.emp_name = emp_name;
@@ -26,7 +32,7 @@ public class employee {
         this.emp_hash = emp_hash;
     }
 
-    public void setId(Long id){
+    /*public void setId(Long id){
         this.id = id;
     }
 
@@ -64,5 +70,5 @@ public class employee {
 
     public String getEmp_hash(){
         return emp_hash;
-    }
+    }*/
 }
