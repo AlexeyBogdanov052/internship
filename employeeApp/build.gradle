@@ -1,7 +1,7 @@
 plugins {
     id 'org.springframework.boot' version '2.3.2.RELEASE'
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
-    id 'io.franzbecker.gradle-lombok' version '1.14'
+    id 'io.franzbecker.gradle-lombok' version '4.0.0'
     id 'java'
 }
 
@@ -21,6 +21,21 @@ test {
 }
 
 lombok {
-    version = '1.18.4'
+    version = '1.18.14'
     sha256 = ""
+}
+
+def operations = 'buildSrc/src/Task.xml'
+
+task upload {
+    liquibase{
+        activities{
+            main{
+                operationFile operations
+                url 'jdbc:postgresql://localhost:58925/staff'
+                username 'postgres'
+                password 'postgres'
+            }
+        }
+    }
 }

@@ -29,35 +29,4 @@ public class SchemeRights {
         this.operation_description = operation_description;
     }
 
-    /*public void setId(Long id){
-        this.id = id;
-    }
-
-    public Long getId(){
-        return id;
-    }
-
-    public void setEmp_Id(Long emp_id){
-        this.emp_id = emp_id;
-    }
-
-    public Long getEmp_Id(){
-        return emp_id;
-    }
-
-    public void setOperation_name(String operation_name){
-        this.operation_name = operation_name;
-    }
-
-    public String getOperation_name(){
-        return operation_name;
-    }
-
-    public void setOperation_discription(String operation_description){
-        this.operation_description = operation_description;
-    }
-
-    public String getOperation_description(){
-        return operation_description;
-    }*/
 }
