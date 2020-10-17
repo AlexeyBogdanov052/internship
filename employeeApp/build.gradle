@@ -24,18 +24,3 @@ lombok {
     version = '1.18.14'
     sha256 = ""
 }
-
-def operations = 'buildSrc/src/Task.xml'
-
-task upload {
-    liquibase{
-        activities{
-            main{
-                operationFile operations
-                url 'jdbc:postgresql://localhost:58925/staff'
-                username 'postgres'
-                password 'postgres'
-            }
-        }
-    }
-}
