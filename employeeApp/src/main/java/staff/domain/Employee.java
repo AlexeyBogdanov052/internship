@@ -22,7 +22,14 @@ public class Employee {
     @Column(name = "emp_hash", nullable = false)
     private String emp_hash;
 
-    protected Employee() {}
+    public Employee() {}
+
+    public Employee(String emp_surname, String emp_name, String emp_patronymic, String emp_hash) {
+        this.emp_surname = emp_surname;
+        this.emp_name = emp_name;
+        this.emp_patronymic = emp_patronymic;
+        this.emp_hash = emp_hash;
+    }
 
     public Employee(long id, String emp_surname, String emp_name, String emp_patronymic, String emp_hash) {
         this.id = id;

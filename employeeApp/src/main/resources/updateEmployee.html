@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update topic</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel = "stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+<h1 align="center">Update topic</h1>
+
+<form action="#" th:object="${emp}" th:action="@{/employee/{id}/update (id=${emp.getId()})}" method="post" align="center">
+    <p>New surname: <input type="text" name="emp_surname" /></p>
+    <p>New name: <input type="text" name="emp_name" /></p>
+    <p>New patronymic: <input type="text" name="emp_patronymic" /></p>
+    <p>New password: <input type="text" name="emp_password" /></p>
+    <p><button type="submit" class="btn btn-outline-success">Submit</button> </p>
+</form>
+
+</body>
+</html>

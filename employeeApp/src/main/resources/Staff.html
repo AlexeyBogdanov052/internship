@@ -19,7 +19,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="emp: ${employeers}">
+        <tr th:each="emp: ${staff}">
             <th scope="row" th:utext="${emp.getId()}"></th>
             <td th:utext="${emp.getSurname()}"></td>
             <td th:utext="${emp.getName()}"></td>
