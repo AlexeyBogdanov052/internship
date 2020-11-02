@@ -33,4 +33,22 @@ public class SchemeRightsController {
         }
         return result;
     }
+
+    @GetMapping(value = {"/sheme_rights/{id}/update"})
+    public String upListForm(Model model, @PathVariable long id) {
+        SchemeRights right = srRep.findById(id);
+
+        model.addAttribute("right", right);
+
+        return "/updateRight";
+    }
+
+    @RequestMapping(value = {"/sheme_rights/{id}/update"}, method = {RequestMethod.POST})
+    public String upListSubmit(Model model, @PathVariable long id,
+                               @ModelAttribute("right") SchemeRights right) {
+        SchemeRights rightToUpdate = srRep.findById(id);
+        //...
+
+        return "redirect:/list/" + id;
+    }
 }

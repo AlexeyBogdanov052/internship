@@ -9,10 +9,25 @@
 
     </head>
     <body>
-        <div class="custom-control custom-checkbox" th:each="right: ${rights}">
-            <input type="checkbox" class="custom-control-input" id="customCheck1">
-            <label class="custom-control-label" for="customCheck1" th:utext="${right.getName()}"></label>
-        </div>
+    <table class="table table-striped table-dark">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Схема прав</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="right: ${rights}">
+            <th scope="row" th:utext="${right.getId()}"></th>
+            <td th:utext="${right.getScheme_name()}"></td>
+            <td>
+                <a th:href="@{/sheme_rights/{id}/update (id=${right.getId()})}">
+                    <button type="button" class="btn btn-link">Редактировать</button>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

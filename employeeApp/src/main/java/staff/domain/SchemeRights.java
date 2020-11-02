@@ -19,14 +19,17 @@ public class SchemeRights {
     private String operation_name;
     @Column(name = "operation_description", nullable = false)
     private String operation_description;
+    @Column(name = "scheme_name", nullable = false)
+    private String scheme_name;
 
     protected SchemeRights() {}
 
-    public SchemeRights(Long id, Long emp_id, String operation_name, String operation_description) {
+    public SchemeRights(Long id, Long emp_id, String operation_name, String operation_description, String scheme_name) {
         this.id = id;
         this.emp_id = emp_id;
         this.operation_name = operation_name;
         this.operation_description = operation_description;
+        this.scheme_name = scheme_name;
     }
 
 }
