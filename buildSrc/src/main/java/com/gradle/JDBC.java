@@ -1,10 +1,17 @@
+package com.gradle;
+
+import org.gradle.api.DefaultTask;
+import org.gradle.api.tasks.TaskAction;
+
 import java.sql.*;
 import javax.xml.bind.annotation.*;
 import java.util.*;
 import java.io.File;
 import javax.xml.bind.*;
 
-public class JDBC {
+public class JDBC extends DefaultTask {
+
+    @TaskAction
     public static void Task() throws JAXBException {
         JAXBContext jc = JAXBContext.newInstance(Config.class);
 
