@@ -5,11 +5,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import staff.dao.EmployeeRepository;
 import staff.domain.Employee;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.apache.commons.codec.digest.DigestUtils;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 @Controller
 public class EmployeeController {
@@ -22,7 +23,7 @@ public class EmployeeController {
 
         model.addAttribute("staff", staff.values());
 
-        return "index";
+        return "staff";
     }
 
     private Map<Long, Employee> getEmp(){
@@ -38,14 +39,28 @@ public class EmployeeController {
     @RequestMapping(value={"/addemp"}, method=RequestMethod.GET)
     public String empForm(Model model) {
         model.addAttribute("addemp", new Employee());
-        return "addemp";
+        return "addemployee";
     }
 
     @RequestMapping(value={"/addemp"}, method=RequestMethod.POST)
     public String empSubmit(@ModelAttribute Employee addemp, Model model) {
-        Employee result = empRep.save(new Employee(addemp.getEmp_surname(), addemp.getEmp_name(), addemp.getEmp_patronymic(), addemp.getEmp_hash()));
+        String psswd = DigestUtils.sha256Hex(addemp.getHash());
+        String salt = randomString();
+        String hash = DigestUtils.sha256Hex(psswd + salt);
+        empRep.save(new Employee(addemp.getSurname(), addemp.getName(), addemp.getPatronymic(), hash, addemp.getLogin(), salt, null));
 
         return "redirect:/staff";
+    }
+
+    private String randomString(){
+        char[] chars = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+        StringBuilder sb = new StringBuilder(20);
+        Random random = new Random();
+        for (int i = 0; i < 20; i++) {
+            char c = chars[random.nextInt(chars.length)];
+            sb.append(c);
+        }
+        return sb.toString();
     }
 
     @GetMapping(value = {"/emp/{id}/update"})
@@ -61,12 +76,17 @@ public class EmployeeController {
     public String upEmpSubmit(Model model, @PathVariable long id,
                                @ModelAttribute("emp") Employee emp) {
         Employee empToUpdate = empRep.findById(id);
-        empToUpdate.setEmp_surname(emp.getEmp_surname());
-        empToUpdate.setEmp_name(emp.getEmp_name());
-        empToUpdate.setEmp_patronymic(emp.getEmp_patronymic());
-        empToUpdate.setEmp_hash(emp.getEmp_hash());
+        empToUpdate.setSurname(emp.getSurname());
+        empToUpdate.setName(emp.getName());
+        empToUpdate.setPatronymic(emp.getPatronymic());
+        empToUpdate.setLogin(emp.getLogin());
+        String psswd = DigestUtils.sha256Hex(emp.getHash());
+        String salt = randomString();
+        String hash = DigestUtils.sha256Hex(psswd + salt);
+        empToUpdate.setHash(hash);
+        empToUpdate.setSalt(salt);
         empRep.save(empToUpdate);
 
-        return "redirect:/staff";
+        return "redirect:/staff/";
     }
 }

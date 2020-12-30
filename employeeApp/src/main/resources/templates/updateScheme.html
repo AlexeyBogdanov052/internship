@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update employee</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel = "stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+<h1 align="center">Update scheme</h1>
+<form action="#" th:object="${right}" th:action="@{/sheme_rights/{id}/update (id=${right.getId()})}"  method="post" align="center">
+    <div class="form-group row">
+        <label for="i2" class="col-sm-2 col-form-label">New name</label>
+        <div class="col-sm-10">
+            <input type="text" th:field="*{name}" class="form-control" id="i2">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-outline-success">Submit</button>
+</form></body>
+</html>

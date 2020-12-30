@@ -1,0 +1,24 @@
+staff/dao/EmployeeRepository.java
+ staff.dao.EmployeeRepository
+staff/controller/OperationController.java
+ staff.controller.OperationController
+staff/domain/SchemeRights.java
+ staff.domain.SchemeRights
+staff/employeeApplication.java
+ staff.employeeApplication
+staff/controller/EmployeeController.java
+ staff.controller.EmployeeController
+staff/domain/Employee.java
+ staff.domain.Employee
+staff/domain/Operations.java
+ staff.domain.Operations
+staff/dao/OperationsRepository.java
+ staff.dao.OperationsRepository
+staff/dao/SchemeOperationsReposiroty.java
+ staff.dao.SchemeOperationsReposiroty
+staff/domain/SchemeOperations.java
+ staff.domain.SchemeOperations
+staff/dao/SchemeRightsRepository.java
+ staff.dao.SchemeRightsRepository
+staff/controller/SchemeRightsController.java
+ staff.controller.SchemeRightsController

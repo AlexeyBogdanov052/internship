@@ -10,26 +10,21 @@ import javax.persistence.*;
 public class SchemeRights {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-    @Column(name = "emp_id", nullable = false)
-    private Long emp_id;
-    @Column(name = "operation_name", nullable = false)
-    private String operation_name;
-    @Column(name = "operation_description", nullable = false)
-    private String operation_description;
-    @Column(name = "scheme_name", nullable = false)
-    private String scheme_name;
+    @Column(name = "name", nullable = false)
+    private String name;
 
-    protected SchemeRights() {}
+    public SchemeRights() {}
 
-    public SchemeRights(Long id, Long emp_id, String operation_name, String operation_description, String scheme_name) {
+    public SchemeRights(String name) {
+        this.name = name;
+    }
+
+    public SchemeRights(Long id, String name) {
         this.id = id;
-        this.emp_id = emp_id;
-        this.operation_name = operation_name;
-        this.operation_description = operation_description;
-        this.scheme_name = scheme_name;
+        this.name = name;
     }
 
 }

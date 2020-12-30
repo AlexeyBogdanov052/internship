@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add employeer</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel = "stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+<h1 align="center">Add new scheme rights</h1>
+<form action="#" th:action="@{/addscheme}" method="post" align="center">
+    <div class="form-group row" th:object="${addscheme}">
+        <label for="i2" class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-10">
+            <input type="text" th:field="*{name}" class="form-control" id="i2">
+        </div>
+    </div>
+    <h1 align="center">Operations</h1>
+
+    <div class="form-check" th:object="${operations}" th:each="op: ${alloperations}">
+        <input class="form-check-input" type="checkbox" th:value="${op.getId()}" th:field="*{operations.getId()}" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault" th:utext="${op.getName()}"></label>
+    </div>
+
+    <button type="submit" class="btn btn-outline-success">Submit</button>
+</form>
+
+</body>
+</html>

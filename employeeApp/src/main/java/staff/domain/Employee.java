@@ -1,7 +1,6 @@
 package staff.domain;
 
 import lombok.Data;
-
 import javax.persistence.*;
 
 @Entity
@@ -10,33 +9,44 @@ import javax.persistence.*;
 public class Employee {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-    @Column(name = "emp_surname", nullable = false)
-    private String emp_surname;
-    @Column(name = "emp_name", nullable = false)
-    private String emp_name;
-    @Column(name = "emp_patronymic", nullable = false)
-    private String emp_patronymic;
-    @Column(name = "emp_hash", nullable = false)
-    private String emp_hash;
+    @Column(name = "surname", nullable = false)
+    private String surname;
+    @Column(name = "name", nullable = false)
+    private String name;
+    @Column(name = "patronymic", nullable = false)
+    private String patronymic;
+    @Column(name = "hash", nullable = false)
+    private String hash;
+    @Column(name = "login", nullable = false)
+    private String login;
+    @Column(name = "salt", nullable = false)
+    private String salt;
+    @Column(name = "id_scheme_rights", nullable = true)
+    private Long id_scheme_rights;
 
     public Employee() {}
 
-    public Employee(String emp_surname, String emp_name, String emp_patronymic, String emp_hash) {
-        this.emp_surname = emp_surname;
-        this.emp_name = emp_name;
-        this.emp_patronymic = emp_patronymic;
-        this.emp_hash = emp_hash;
+    public Employee(String surname, String name, String patronymic, String hash, String login, String salt, Long id_scheme_rights) {
+        this.surname = surname;
+        this.name = name;
+        this.patronymic = patronymic;
+        this.hash = hash;
+        this.login = login;
+        this.salt = salt;
+        this.id_scheme_rights = id_scheme_rights;
     }
 
-    public Employee(long id, String emp_surname, String emp_name, String emp_patronymic, String emp_hash) {
+    public Employee(long id, String surname, String name, String patronymic, String hash, String login, String salt, Long id_scheme_rights) {
         this.id = id;
-        this.emp_surname = emp_surname;
-        this.emp_name = emp_name;
-        this.emp_patronymic = emp_patronymic;
-        this.emp_hash = emp_hash;
+        this.surname = surname;
+        this.name = name;
+        this.patronymic = patronymic;
+        this.hash = hash;
+        this.login = login;
+        this.salt = salt;
+        this.id_scheme_rights = id_scheme_rights;
     }
-
 }

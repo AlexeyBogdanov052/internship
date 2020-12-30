@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Employeers</title>
+    <title>Staff</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -9,6 +9,9 @@
 
 </head>
     <body>
+    <a th:href="@{/addemp}">
+        <button type="button" class="btn btn-dark" >Добавить сотрудника</button>
+    </a>
     <table class="table table-striped table-dark">
         <thead>
         <tr>
@@ -16,12 +19,22 @@
             <th scope="col">Фамилия</th>
             <th scope="col">Имя</th>
             <th scope="col">Отчество</th>
+            <th scope="col">Логин</th>
+            <th scope="col" align="=center"> </th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="emp: ${staff}">
-            <th scope="row" th:utext="${right.getId()}"></th>
-
+            <th scope="row" th:utext="${emp.getId()}"></th>
+            <th scope="row" th:utext="${emp.getSurname()}"></th>
+            <th scope="row" th:utext="${emp.getName()}"></th>
+            <th scope="row" th:utext="${emp.getPatronymic()}"></th>
+            <th scope="row" th:utext="${emp.getLogin()}"></th>
+            <th>
+                <a th:href="@{/emp/{id}/update (id=${emp.getId()})}">
+                    <button type="button" class="btn btn-dark">⚙</button>
+                </a>
+            </th>
         </tr>
         </tbody>
     </table>
