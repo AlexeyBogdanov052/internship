@@ -16,13 +16,6 @@
             <input type="text" th:field="*{name}" class="form-control" id="i2">
         </div>
     </div>
-    <h1 align="center">Operations</h1>
-
-    <div class="form-check" th:object="${operations}" th:each="op: ${alloperations}">
-        <input class="form-check-input" type="checkbox" th:value="${op.getId()}" th:field="*{operations.getId()}" id="flexCheckDefault">
-        <label class="form-check-label" for="flexCheckDefault" th:utext="${op.getName()}"></label>
-    </div>
-
     <button type="submit" class="btn btn-outline-success">Submit</button>
 </form>
 

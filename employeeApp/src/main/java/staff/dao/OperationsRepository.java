@@ -1,8 +1,8 @@
 package staff.dao;
 
-import staff.domain.Operations;
+import staff.domain.Operation;
 import org.springframework.data.repository.CrudRepository;
 
-public interface OperationsRepository extends CrudRepository<Operations, Long> {
-    Operations findById(long id);
+public interface OperationsRepository extends CrudRepository<Operation, Long> {
+    Operation findById(long id);
 }

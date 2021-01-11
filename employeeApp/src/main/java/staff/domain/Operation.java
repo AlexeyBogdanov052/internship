@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Entity
 @Data
 @Table(name = "operations")
-public class Operations {
+public class Operation {
 
     @Id
     @Column(name = "id", nullable = false)
@@ -14,9 +14,9 @@ public class Operations {
     @Column(name = "operation_name", nullable = false)
     private String name;
 
-    public Operations() {}
+    public Operation() {}
 
-    public Operations(Long id, String name){
+    public Operation(Long id, String name){
         this.id = id;
         this.name = name;
     }

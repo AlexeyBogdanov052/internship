@@ -1,12 +1,11 @@
 package staff.controller;
 
-import com.sun.istack.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import staff.dao.OperationsRepository;
 import staff.dao.SchemeOperationsReposiroty;
 import staff.dao.SchemeRightsRepository;
-import staff.domain.Operations;
+import staff.domain.Operation;
 import staff.domain.SchemeOperations;
 import staff.domain.SchemeRights;
 import org.springframework.ui.Model;
@@ -44,10 +43,8 @@ public class SchemeRightsController {
 
     @RequestMapping(value={"/addscheme"}, method=RequestMethod.GET)
     public String empForm(Model model) {
-        Map<Long, Operations> alloperations = getAllOperations();
-        model.addAttribute("alloperations", alloperations.values());
-        ArrayList<Operations> operations = new ArrayList<Operations>();
-        model.addAttribute("operations", operations);
+//        ArrayList<Operation> operations = new ArrayList<Operation>();
+//        model.addAttribute("operations", operations);
 
         model.addAttribute("addscheme", new SchemeRights());
 
@@ -55,25 +52,16 @@ public class SchemeRightsController {
     }
 
     @RequestMapping(value={"/addscheme"}, method=RequestMethod.POST)
-    public String empSubmit(@ModelAttribute SchemeRights addscheme, Model model,
-                            @ModelAttribute Operations operations) {
-//        srRep.save(new SchemeRights(addscheme.getName()));
-//        System.out.println(addscheme.getName());
-//        Iterable<Operations> opq = Collections.singleton(operations);
-//        for (Operations op: operations) {
-//            soRep.save(new SchemeOperations(addscheme.getId(), op.getId()));
-//            System.out.println(op);
-//        }
-        System.out.println(operations);
-
+    public String empSubmit(@ModelAttribute SchemeRights addscheme, Model model) {
+        srRep.save(new SchemeRights(addscheme.getName()));
         return "redirect:/scheme_rights";
     }
 
-    private Map<Long, Operations> getAllOperations(){
-        Map<Long, Operations> result = new HashMap<>();
-        Iterable<Operations> storage = opRep.findAll();
+    private Map<Long, Operation> getAllOperations(){
+        Map<Long, Operation> result = new HashMap<>();
+        Iterable<Operation> storage = opRep.findAll();
 
-        for (Operations op: storage) {
+        for (Operation op: storage) {
             result.put(op.getId(), op);
         }
         return result;
@@ -81,19 +69,50 @@ public class SchemeRightsController {
 
     @GetMapping(value = {"/sheme_rights/{id}/update"})
     public String upListForm(Model model, @PathVariable long id) {
-        SchemeRights right = srRep.findById(id);
-
-        model.addAttribute("right", right);
+        SchemeRights scheme = srRep.findById(id);
+        model.addAttribute("scheme", scheme);
+        Map<Long, Operation> alloperations = getAllOperations();
+        model.addAttribute("alloperations", alloperations.values());
+        ArrayList<Long> currentOperations = getCurrentOperations(id);
+        model.addAttribute("currentoperations", currentOperations);
 
         return "/updateScheme";
     }
 
     @RequestMapping(value = {"/sheme_rights/{id}/update"}, method = {RequestMethod.POST})
     public String upListSubmit(Model model, @PathVariable long id,
-                               @ModelAttribute("right") SchemeRights right) {
-        SchemeRights rightToUpdate = srRep.findById(id);
+                               @RequestParam(value = "operations" , required = false) long[] operations) {
+        ArrayList<SchemeOperations> result = new ArrayList<>();
+        if (operations != null){
+            refresh(id);
+            for (int i = 0; i < operations.length; i++) {
+                SchemeOperations a = SchemeOperations.builder().scheme_id(id).operation_id(operations[i]).build();
+                result.add(a);
+            }
+        }
+        soRep.saveAll(result);
         //...
+        return "redirect:/scheme_rights/";
+    }
 
-        return "redirect:/SchemeRights/";
+    private ArrayList<Long> getCurrentOperations(Long id){
+        ArrayList<Long> result = new ArrayList<>();
+        Iterable<SchemeOperations> currentOperations = soRep.findAll();
+
+        for (SchemeOperations so: currentOperations) {
+            if (so.getScheme_id() == id){
+                result.add(so.getOperation_id());
+            }
+        }
+        return result;
+    }
+
+    private void refresh(Long id){
+        Iterable<SchemeOperations> all = soRep.findAll();
+        for (SchemeOperations so: all) {
+            if (so.getScheme_id() == id){
+                soRep.delete(so);
+            }
+        }
     }
 }
