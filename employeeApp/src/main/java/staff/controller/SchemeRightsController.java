@@ -115,4 +115,10 @@ public class SchemeRightsController {
             }
         }
     }
+
+    @RequestMapping(value = {"/scheme/{id}/delete"})
+    public String removeScheme(@PathVariable Long id) {
+        srRep.deleteById(id);
+        return "redirect:/scheme_rights";
+    }
 }
