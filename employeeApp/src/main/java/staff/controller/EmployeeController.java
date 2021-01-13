@@ -2,11 +2,13 @@ package staff.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
-import staff.dao.EmployeeRepository;
+import staff.repository.EmployeeRepository;
+import staff.repository.SchemeRightsRepository;
 import staff.domain.Employee;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.apache.commons.codec.digest.DigestUtils;
+import staff.domain.SchemeRights;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,6 +18,8 @@ import java.util.Random;
 public class EmployeeController {
     @Autowired
     private EmployeeRepository empRep;
+    @Autowired
+    private SchemeRightsRepository srRep;
 
     @RequestMapping(value = {"/staff"}, method = RequestMethod.GET)
     public String getStaff(Model model){
@@ -66,15 +70,17 @@ public class EmployeeController {
     @GetMapping(value = {"/emp/{id}/update"})
     public String upEmpForm(Model model, @PathVariable long id) {
         Employee emp = empRep.findById(id);
-
         model.addAttribute("emp", emp);
+        Map<Long, SchemeRights> sr = getRights();
+        model.addAttribute("schemes", sr.values());
 
         return "/updateEmployee";
     }
 
     @RequestMapping(value = {"/emp/{id}/update"}, method = {RequestMethod.POST})
     public String upEmpSubmit(Model model, @PathVariable long id,
-                               @ModelAttribute("emp") Employee emp) {
+                               @ModelAttribute("emp") Employee emp,
+                               @RequestParam(value = "idsr" , required = false) long idsr) {
         Employee empToUpdate = empRep.findById(id);
         empToUpdate.setSurname(emp.getSurname());
         empToUpdate.setName(emp.getName());
@@ -85,8 +91,23 @@ public class EmployeeController {
         String hash = DigestUtils.sha256Hex(psswd + salt);
         empToUpdate.setHash(hash);
         empToUpdate.setSalt(salt);
+        if (idsr > 0){
+            empToUpdate.setId_scheme_rights(idsr);
+        } else {
+            empToUpdate.setId_scheme_rights(null);
+        }
         empRep.save(empToUpdate);
 
         return "redirect:/staff/";
+    }
+
+    private Map<Long, SchemeRights> getRights(){
+        Map<Long, SchemeRights> result = new HashMap<>();
+        Iterable<SchemeRights> storage = srRep.findAll();
+
+        for (SchemeRights right: storage) {
+            result.put(right.getId(), right);
+        }
+        return result;
     }
 }

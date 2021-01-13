@@ -8,8 +8,8 @@ staff/employeeApplication.java
  staff.employeeApplication
 staff/domain/Operation.java
  staff.domain.Operation
-staff/controller/EmployeeController.java
- staff.controller.EmployeeController
+staff/domain/SchemeOperationsId.java
+ staff.domain.SchemeOperationsId
 staff/domain/Employee.java
  staff.domain.Employee
 staff/dao/SchemeRightsRepository.java
@@ -21,7 +21,7 @@ staff/dao/SchemeOperationsReposiroty.java
 staff/domain/SchemeOperations.java
  staff.domain.SchemeOperations
  staff.domain.SchemeOperations$SchemeOperationsBuilder
-staff/domain/SchemeOperationsId.java
- staff.domain.SchemeOperationsId
+staff/controller/EmployeeController.java
+ staff.controller.EmployeeController
 staff/controller/SchemeRightsController.java
  staff.controller.SchemeRightsController

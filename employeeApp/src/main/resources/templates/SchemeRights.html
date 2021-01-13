@@ -32,7 +32,10 @@
                     <button type="button" class="btn btn-dark">⚙</button>
                 </a>
             </th>
-            <th>
+            <th th:if="${currentIds.contains(right.getId())}">
+                <button type="button" class="btn btn-dark" disabled>❌</button>
+            </th>
+            <th th:if="${not currentIds.contains(right.getId())}">
                 <a th:href="@{/scheme/{id}/delete (id=${right.id})}" onclick="return confirm('Вы уверены, что хотите удалить эту схему прав?');">
                     <button type="button" class="btn btn-dark">❌</button>
                 </a>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Sign in</title>
+
+    <!-- Bootstrap core CSS -->
+    <!-- <link rel="stylesheet" href="/assets/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" th:href="@{/css/signin.css}">
+
+</head>
+
+<body class="text-center">
+
+    <main class="form-signin">
+        <form>
+            <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+            <label for="inputEmail" class="visually-hidden">Login</label>
+            <input type="text" id="inputEmail" class="form-control" placeholder="Login" required autofocus>
+            <label for="inputPassword" class="visually-hidden">Password</label>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+
+            <button class="w-100 btn btn-lg btn-dark" type="submit">Sign in</button>
+        </form>
+    </main>
+
+</body>
+</html>

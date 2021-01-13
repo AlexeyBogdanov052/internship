@@ -2,9 +2,11 @@ package staff.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import staff.dao.OperationsRepository;
-import staff.dao.SchemeOperationsReposiroty;
-import staff.dao.SchemeRightsRepository;
+import staff.repository.EmployeeRepository;
+import staff.repository.OperationsRepository;
+import staff.repository.SchemeOperationsReposiroty;
+import staff.repository.SchemeRightsRepository;
+import staff.domain.Employee;
 import staff.domain.Operation;
 import staff.domain.SchemeOperations;
 import staff.domain.SchemeRights;
@@ -16,6 +18,8 @@ import java.util.*;
 @Controller
 public class SchemeRightsController {
     @Autowired
+    private EmployeeRepository empRep;
+    @Autowired
     private SchemeRightsRepository srRep;
     @Autowired
     private OperationsRepository opRep;
@@ -25,8 +29,9 @@ public class SchemeRightsController {
     @RequestMapping(value = {"/scheme_rights"}, method = RequestMethod.GET)
     public String getStaff(Model model){
         Map<Long, SchemeRights> rights = getRights();
-
         model.addAttribute("rights", rights.values());
+        Set<Long> currentIds = getCurrentIds();
+        model.addAttribute("currentIds", currentIds);
 
         return "schemerights";
     }
@@ -37,6 +42,16 @@ public class SchemeRightsController {
 
         for (SchemeRights right: storage) {
             result.put(right.getId(), right);
+        }
+        return result;
+    }
+
+    private Set<Long> getCurrentIds(){
+        Set<Long> result = new HashSet<>();
+        Iterable<Employee> storage = empRep.findAll();
+
+        for (Employee emp: storage){
+            result.add(emp.getId_scheme_rights());
         }
         return result;
     }

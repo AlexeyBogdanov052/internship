@@ -1,4 +1,4 @@
-package staff.dao;
+package staff.repository;
 
 import staff.domain.SchemeRights;
 import org.springframework.data.repository.CrudRepository;
