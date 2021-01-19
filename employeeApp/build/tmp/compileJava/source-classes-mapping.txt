@@ -1,27 +1,37 @@
-staff/dao/EmployeeRepository.java
- staff.dao.EmployeeRepository
-staff/controller/OperationController.java
- staff.controller.OperationController
-staff/domain/SchemeRights.java
- staff.domain.SchemeRights
+staff/repository/SchemeRightsRepository.java
+ staff.repository.SchemeRightsRepository
 staff/employeeApplication.java
  staff.employeeApplication
 staff/domain/Operation.java
  staff.domain.Operation
-staff/domain/SchemeOperationsId.java
- staff.domain.SchemeOperationsId
 staff/domain/Employee.java
  staff.domain.Employee
-staff/dao/SchemeRightsRepository.java
- staff.dao.SchemeRightsRepository
-staff/dao/OperationsRepository.java
- staff.dao.OperationsRepository
-staff/dao/SchemeOperationsReposiroty.java
- staff.dao.SchemeOperationsReposiroty
+staff/domain/SchemeRights.java
+ staff.domain.SchemeRights
+staff/repository/SchemeOperationsReposiroty.java
+ staff.repository.SchemeOperationsReposiroty
 staff/domain/SchemeOperations.java
  staff.domain.SchemeOperations
  staff.domain.SchemeOperations$SchemeOperationsBuilder
+staff/domain/SchemeOperationsId.java
+ staff.domain.SchemeOperationsId
 staff/controller/EmployeeController.java
  staff.controller.EmployeeController
+staff/repository/OperationsRepository.java
+ staff.repository.OperationsRepository
 staff/controller/SchemeRightsController.java
  staff.controller.SchemeRightsController
+staff/config/MVCConfig.java
+ staff.config.MVCConfig
+staff/domain/enums/EmployeeRoleEnum.java
+ staff.domain.enums.EmployeeRoleEnum
+ staff.domain.enums.EmployeeRoleEnum$1
+staff/service/UserDetailsImpl.java
+ staff.service.UserDetailsImpl
+staff/repository/EmployeeRepository.java
+ staff.repository.EmployeeRepository
+staff/controller/MainController.java
+ staff.controller.MainController
+staff/config/WebSecurityConfig.java
+ staff.config.WebSecurityConfig
+ staff.config.WebSecurityConfig$AuthenticationConfiguration
