@@ -10,15 +10,14 @@ import staff.repository.EmployeeRepository;
 
 import java.util.List;
 
-@Service
-public class UserDetailsImpl implements UserDetailsService {
+@Service("userDetailsService")
+public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private EmployeeRepository empRep;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Employee user = empRep.findByLogin(username);
-
         if (user == null) {
             throw new UsernameNotFoundException("User not found");
         }

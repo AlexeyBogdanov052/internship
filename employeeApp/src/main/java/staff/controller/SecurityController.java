@@ -11,21 +11,13 @@ import staff.domain.Employee;
 import staff.repository.EmployeeRepository;
 
 @Controller
-public class MainController {
+public class SecurityController {
     @Autowired
     private EmployeeRepository empRep;
 
-    @RequestMapping(value = {"/", "/main"}, method = RequestMethod.GET)
-    public String mainStart(Model model){
-
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth.getName() != null) {
-            Employee active = empRep.findByLogin(auth.getName());
-            model.addAttribute("active", active);
-            model.addAttribute("isActive", true);
-        } else {
-            model.addAttribute("isActive", false);
-        }
-        return "index";
+    @RequestMapping(value={"/login"}, method = RequestMethod.GET)
+    public String getLogin(Model model) {
+        return "login";
     }
+
 }

@@ -1,6 +1,8 @@
 package staff.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import staff.repository.EmployeeRepository;
 import staff.repository.OperationsRepository;
@@ -32,6 +34,15 @@ public class SchemeRightsController {
         model.addAttribute("rights", rights.values());
         Set<Long> currentIds = getCurrentIds();
         model.addAttribute("currentIds", currentIds);
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth.getName() != null) {
+            Employee active = empRep.findByLogin(auth.getName());
+            model.addAttribute("active", active);
+            model.addAttribute("isActive", true);
+        } else {
+            model.addAttribute("isActive", false);
+        }
 
         return "schemerights";
     }
