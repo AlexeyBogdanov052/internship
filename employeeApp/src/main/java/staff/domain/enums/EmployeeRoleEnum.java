@@ -2,7 +2,7 @@ package staff.domain.enums;
 
 public enum EmployeeRoleEnum {
     ADMIN,
-    USER,
+    EMPLOYEE,
 
     EMPLOYEE_ROLE_ENUM(){
     }

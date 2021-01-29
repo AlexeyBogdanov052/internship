@@ -38,18 +38,20 @@
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                    <p class="nav-link disabled" tabindex="-1" aria-disabled="true" th:if="${active}" th:utext="${active.surname + ' ' + active.name + ' ' + active.patronymic}"></p>
                 </li>
             </ul>
+            <font color="white" margin="10px">
+                <p class="fs-6" th:if="${active}" th:utext="${active.surname + ' ' + active.name + ' ' + active.patronymic}"></p>
+            </font>
             <a th:href="@{/login}">
                 <p th:unless="${active}">
-                    <button class="btn btn-outline-light" type="submit">Sign in</button>
+                    <button class="btn btn-outline-light" type="submit">Войти</button>
                 </p></a>
 
             <a th:href="@{/logout}">
                 <p th:if="${active}">
                     <button class="btn btn-outline-light" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Sign out
+                        Выйти
                     </button>
                 </p> </a>
 

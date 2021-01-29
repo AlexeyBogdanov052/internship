@@ -105,7 +105,7 @@ public class SchemeRightsController {
         return "/updateScheme";
     }
 
-    @RequestMapping(value = {"/sheme_rights/{id}/update"}, method = {RequestMethod.POST})
+    @RequestMapping(value = {"/sheme_update/{id}"}, method = {RequestMethod.POST})
     public String upListSubmit(Model model, @PathVariable long id,
                                @RequestParam(value = "operations" , required = false) long[] operations) {
         ArrayList<SchemeOperations> result = new ArrayList<>();

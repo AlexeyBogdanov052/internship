@@ -2,9 +2,8 @@ staff/service/UserDetailsServiceImpl.java
  staff.service.UserDetailsServiceImpl
 staff/repository/SchemeRightsRepository.java
  staff.repository.SchemeRightsRepository
-staff/domain/enums/EmployeeRoleEnum.java
- staff.domain.enums.EmployeeRoleEnum
- staff.domain.enums.EmployeeRoleEnum$1
+staff/controller/EmployeeController.java
+ staff.controller.EmployeeController
 staff/employeeApplication.java
  staff.employeeApplication
 staff/domain/SchemeOperationsId.java
@@ -13,26 +12,29 @@ staff/domain/Operation.java
  staff.domain.Operation
 staff/domain/Employee.java
  staff.domain.Employee
-staff/config/WebSecurityConfig.java
- staff.config.WebSecurityConfig
-staff/repository/SchemeOperationsReposiroty.java
- staff.repository.SchemeOperationsReposiroty
+staff/repository/OperationsRepository.java
+ staff.repository.OperationsRepository
+staff/controller/SecurityController.java
+ staff.controller.SecurityController
 staff/controller/MainController.java
  staff.controller.MainController
 staff/domain/SchemeOperations.java
  staff.domain.SchemeOperations
  staff.domain.SchemeOperations$SchemeOperationsBuilder
-staff/config/CustomAuthenticationProvider.java
- staff.config.CustomAuthenticationProvider
-staff/repository/EmployeeRepository.java
- staff.repository.EmployeeRepository
 staff/domain/SchemeRights.java
  staff.domain.SchemeRights
-staff/repository/OperationsRepository.java
- staff.repository.OperationsRepository
-staff/controller/SecurityController.java
- staff.controller.SecurityController
-staff/controller/EmployeeController.java
- staff.controller.EmployeeController
+staff/repository/EmployeeRepository.java
+ staff.repository.EmployeeRepository
+staff/domain/enums/EmployeeRoleEnum.java
+ staff.domain.enums.EmployeeRoleEnum
+ staff.domain.enums.EmployeeRoleEnum$1
+staff/config/SetupDataLoader.java
+ staff.config.SetupDataLoader
+staff/config/CustomAuthenticationProvider.java
+ staff.config.CustomAuthenticationProvider
+staff/repository/SchemeOperationsReposiroty.java
+ staff.repository.SchemeOperationsReposiroty
 staff/controller/SchemeRightsController.java
  staff.controller.SchemeRightsController
+staff/config/WebSecurityConfig.java
+ staff.config.WebSecurityConfig

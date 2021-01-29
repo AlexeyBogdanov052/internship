@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1 align="center">Update scheme</h1>
-    <form action="#" th:object="${scheme}" th:action="@{/sheme_rights/{id}/update (id=${scheme.getId()})}"  method="post" align="center">
+    <form action="#" th:object="${scheme}" th:action="@{/sheme_update/{id} (id=${scheme.getId()})}"  method="post" align="center">
         <div class="alert alert-dark" role="alert" th:utext="${scheme.getName()}">
             Name:
         </div>
